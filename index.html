@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Enlighten Cafe</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+    <h1>☕ Enlighten Cafe</h1>
+    <p>Fresh Food • Great Taste</p>
+</header>
+
+<section class="menu">
+    <h2>Our Menu</h2>
+
+    <div class="item">
+        <span>Coffee</span>
+        <span>₹80</span>
+        <button onclick="addItem('Coffee - ₹80')">Add</button>
+    </div>
+
+    <div class="item">
+        <span>Cold Coffee</span>
+        <span>₹120</span>
+        <button onclick="addItem('Cold Coffee - ₹120')">Add</button>
+    </div>
+
+    <div class="item">
+        <span>Veg Sandwich</span>
+        <span>₹100</span>
+        <button onclick="addItem('Veg Sandwich - ₹100')">Add</button>
+    </div>
+
+    <div class="item">
+        <span>French Fries</span>
+        <span>₹90</span>
+        <button onclick="addItem('French Fries - ₹90')">Add</button>
+    </div>
+</section>
+
+<section class="order">
+    <h2>Your Order</h2>
+    <textarea id="orderBox" placeholder="Your order will appear here"></textarea>
+    <button onclick="sendWhatsApp()">Order on WhatsApp</button>
+</section>
+
+<script src="script.js"></script>
+</body>
+</html>
