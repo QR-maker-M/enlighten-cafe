@@ -1,51 +1,25 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Enlighten Cafe</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-
-<header>
-    <h1>☕ Enlighten Cafe</h1>
-    <p>Fresh Food • Great Taste</p>
-</header>
-
 <section class="menu">
-    <h2>Our Menu</h2>
 
-    <div class="item">
-        <span>Coffee</span>
-        <span>₹80</span>
-        <button onclick="addItem('Coffee - ₹80')">Add</button>
-    </div>
+<h2>☕ Espresso Bar</h2>
+<div class="item"><span>Espresso</span><span>₹120</span><button onclick="addItem('Espresso - ₹120')">Add</button></div>
+<div class="item"><span>Cappuccino</span><span>₹180</span><button onclick="addItem('Cappuccino - ₹180')">Add</button></div>
+<div class="item"><span>Caffè Latte</span><span>₹190</span><button onclick="addItem('Caffè Latte - ₹190')">Add</button></div>
+<div class="item"><span>Caffè Mocha</span><span>₹220</span><button onclick="addItem('Caffè Mocha - ₹220')">Add</button></div>
 
-    <div class="item">
-        <span>Cold Coffee</span>
-        <span>₹120</span>
-        <button onclick="addItem('Cold Coffee - ₹120')">Add</button>
-    </div>
+<h2>🧊 Slow Bar & Pour Overs</h2>
+<div class="item"><span>Cold Brew</span><span>₹230</span><button onclick="addItem('Cold Brew - ₹230')">Add</button></div>
+<div class="item"><span>Nitro Cold Brew</span><span>₹280</span><button onclick="addItem('Nitro Cold Brew - ₹280')">Add</button></div>
 
-    <div class="item">
-        <span>Veg Sandwich</span>
-        <span>₹100</span>
-        <button onclick="addItem('Veg Sandwich - ₹100')">Add</button>
-    </div>
+<h2>🌸 Signature Lattes</h2>
+<div class="item"><span>Lavender Honey Latte</span><span>₹260</span><button onclick="addItem('Lavender Honey Latte - ₹260')">Add</button></div>
+<div class="item"><span>Dirty Chai</span><span>₹240</span><button onclick="addItem('Dirty Chai - ₹240')">Add</button></div>
 
-    <div class="item">
-        <span>French Fries</span>
-        <span>₹90</span>
-        <button onclick="addItem('French Fries - ₹90')">Add</button>
-    </div>
+<h2>🥐 All-Day Kitchen</h2>
+<div class="item"><span>Avocado Toast</span><span>₹280</span><button onclick="addItem('Avocado Toast - ₹280')">Add</button></div>
+<div class="item"><span>Morning Brioche</span><span>₹260</span><button onclick="addItem('Morning Brioche - ₹260')">Add</button></div>
+
+<h2>🍰 Pastries</h2>
+<div class="item"><span>Butter Croissant</span><span>₹140</span><button onclick="addItem('Butter Croissant - ₹140')">Add</button></div>
+<div class="item"><span>Sea Salt Brownie</span><span>₹170</span><button onclick="addItem('Sea Salt Brownie - ₹170')">Add</button></div>
+
 </section>
-
-<section class="order">
-    <h2>Your Order</h2>
-    <textarea id="orderBox" placeholder="Your order will appear here"></textarea>
-    <button onclick="sendWhatsApp()">Order on WhatsApp</button>
-</section>
-
-<script src="script.js"></script>
-</body>
-</html>
