@@ -1,45 +1,94 @@
+* {
+    box-sizing: border-box;
+}
+
 body {
-    font-family: Arial, sans-serif;
-    background: #f4f4f4;
     margin: 0;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background-color: #121212;
+    color: #e0e0e0;
 }
 
+/* Header */
 header {
-    background: #4b2e2e;
-    color: white;
-    padding: 20px;
+    background: linear-gradient(135deg, #1f1f1f, #2c2c2c);
+    padding: 25px;
     text-align: center;
+    border-bottom: 1px solid #333;
 }
 
+header h1 {
+    margin: 0;
+    color: #f5c16c;
+    font-size: 2.2rem;
+}
+
+header p {
+    margin-top: 5px;
+    color: #bbbbbb;
+}
+
+/* Sections */
 .menu, .order {
-    max-width: 600px;
-    margin: 20px auto;
-    background: white;
+    max-width: 650px;
+    margin: 25px auto;
+    background-color: #1e1e1e;
     padding: 20px;
-    border-radius: 10px;
+    border-radius: 12px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.6);
 }
 
+h2 {
+    color: #f5c16c;
+    border-bottom: 1px solid #333;
+    padding-bottom: 8px;
+}
+
+/* Menu Items */
 .item {
     display: flex;
     justify-content: space-between;
-    margin: 10px 0;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px dashed #333;
 }
 
+.item span {
+    font-size: 1rem;
+}
+
+/* Buttons */
 button {
     background: #25D366;
     border: none;
-    color: white;
-    padding: 8px 12px;
+    color: #000;
+    padding: 8px 14px;
+    border-radius: 20px;
+    font-weight: bold;
     cursor: pointer;
-    border-radius: 5px;
+    transition: transform 0.1s ease, opacity 0.1s ease;
 }
 
 button:hover {
-    opacity: 0.8;
+    opacity: 0.85;
+    transform: scale(1.05);
 }
 
+/* Order box */
 textarea {
     width: 100%;
-    height: 100px;
-    margin-bottom: 10px;
+    height: 110px;
+    background-color: #121212;
+    color: #e0e0e0;
+    border: 1px solid #333;
+    border-radius: 8px;
+    padding: 10px;
+    resize: none;
+}
+
+/* WhatsApp button */
+.order button {
+    width: 100%;
+    margin-top: 10px;
+    font-size: 1.05rem;
 }
