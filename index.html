@@ -3,181 +3,196 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blackbox AI | The Developer's Kitchen</title>
+    <title>Blackbox Diner | Mobile Menu</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&family=JetBrains+Mono&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;700&family=JetBrains+Mono&display=swap');
         
+        :root {
+            --neon-blue: #00f2ff;
+            --neon-pink: #ff007a;
+            --bg-dark: #0a0a0c;
+        }
+
         body {
-            font-family: 'Space Grotesk', sans-serif;
-            background-color: #050505;
-            color: #e0e0e0;
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--bg-dark);
+            color: #ffffff;
+            max-width: 500px; /* Forces vertical mobile feel on desktop */
+            margin: 0 auto;
+            border-left: 1px solid #222;
+            border-right: 1px solid #222;
+            min-height: 100vh;
+            padding-bottom: 100px;
         }
 
         .mono { font-family: 'JetBrains Mono', monospace; }
 
-        .neon-border {
-            border: 1px solid rgba(0, 255, 255, 0.3);
-            box-shadow: 0 0 15px rgba(0, 255, 255, 0.1);
+        .item-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            transition: all 0.2s ease;
         }
 
-        .neon-text-blue { text-shadow: 0 0 10px rgba(0, 255, 255, 0.5); color: #00ffff; }
-        .neon-text-pink { text-shadow: 0 0 10px rgba(255, 0, 255, 0.5); color: #ff00ff; }
-
-        .category-tab {
-            transition: all 0.3s ease;
-            cursor: pointer;
-            border-bottom: 2px solid transparent;
+        .item-card:active {
+            transform: scale(0.97);
+            border-color: var(--neon-blue);
         }
 
-        .category-tab:hover, .category-tab.active {
-            color: #00ffff;
-            border-bottom: 2px solid #00ffff;
+        .category-header {
+            position: sticky;
+            top: 0;
+            background: rgba(10, 10, 12, 0.9);
+            backdrop-filter: blur(10px);
+            z-index: 10;
+            padding: 15px 0;
+            border-bottom: 1px solid #222;
         }
 
-        .dish-card {
-            background: linear-gradient(145deg, #0f0f0f, #1a1a1a);
-            border: 1px solid #333;
-            transition: transform 0.2s ease;
-        }
-
-        .dish-card:hover {
-            transform: scale(1.02);
-            border-color: #00ffff;
-        }
-
-        .price-tag {
-            background: rgba(0, 255, 255, 0.1);
-            color: #00ffff;
-            padding: 2px 8px;
-            border-radius: 4px;
-            font-size: 0.8rem;
+        .whatsapp-btn {
+            background: #25D366;
+            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
         }
     </style>
 </head>
 <body>
 
-    <header class="py-16 px-6 text-center border-b border-zinc-800">
-        <h1 class="text-6xl font-bold mb-4 tracking-tight">THE <span class="neon-text-blue">BLACKBOX</span> DINER</h1>
-        <p class="mono text-zinc-500 uppercase tracking-widest text-sm">Fueling the next billion lines of code</p>
+    <header class="p-6 text-center">
+        <div class="w-20 h-20 bg-gradient-to-tr from-cyan-500 to-blue-600 rounded-2xl mx-auto mb-4 flex items-center justify-center shadow-lg">
+            <i class="fas fa-terminal text-3xl text-white"></i>
+        </div>
+        <h1 class="text-3xl font-bold tracking-tight">BLACK<span class="text-cyan-400">BOX</span> DINER</h1>
+        <p class="text-gray-500 text-sm mt-1 mono">Status: Online & Serving</p>
     </header>
 
-    <main class="max-w-6xl mx-auto px-6 py-12">
+    <main class="px-4 space-y-10">
         
-        <section class="mb-20">
-            <div class="flex items-center gap-4 mb-8">
-                <h2 class="text-3xl font-bold neon-text-pink">01. Logic Starters</h2>
-                <div class="h-[1px] flex-grow bg-zinc-800"></div>
-                <span class="mono text-xs text-zinc-600">APPETIZERS</span>
-            </div>
-            
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <div class="dish-card p-6 rounded-xl">
-                    <div class="flex justify-between items-start mb-4">
-                        <h3 class="text-xl font-bold">API Spring Rolls</h3>
-                        <span class="price-tag mono">$12.00</span>
+        <section>
+            <h2 class="text-xs uppercase tracking-[0.2em] text-cyan-500 font-bold mb-4 ml-2">/// LOGIC STARTERS</h2>
+            <div class="space-y-3">
+                <div class="item-card p-4 flex justify-between items-center" onclick="addToOrder('API Spring Rolls', 12)">
+                    <div>
+                        <h3 class="font-bold">API Spring Rolls</h3>
+                        <p class="text-gray-500 text-xs mt-1">Crispy JSON filled pastry</p>
+                        <span class="text-cyan-400 text-sm font-bold">$12</span>
                     </div>
-                    <p class="text-zinc-400 text-sm">Crispy wrappers filled with fresh JSON data and served with a spicy RESTful sauce.</p>
+                    <button class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-cyan-500/20">
+                        <i class="fas fa-plus text-xs"></i>
+                    </button>
                 </div>
-                <div class="dish-card p-6 rounded-xl">
-                    <div class="flex justify-between items-start mb-4">
-                        <h3 class="text-xl font-bold">Cache Calamari</h3>
-                        <span class="price-tag mono">$15.00</span>
+
+                <div class="item-card p-4 flex justify-between items-center" onclick="addToOrder('Cache Calamari', 15)">
+                    <div>
+                        <h3 class="font-bold">Cache Calamari</h3>
+                        <p class="text-gray-500 text-xs mt-1">Low-latency fried rings</p>
+                        <span class="text-cyan-400 text-sm font-bold">$15</span>
                     </div>
-                    <p class="text-zinc-400 text-sm">Flash-fried rings of data, optimized for low latency and high crunch.</p>
-                </div>
-                <div class="dish-card p-6 rounded-xl">
-                    <div class="flex justify-between items-start mb-4">
-                        <h3 class="text-xl font-bold">Git-Commit Garlic Bread</h3>
-                        <span class="price-tag mono">$08.00</span>
-                    </div>
-                    <p class="text-zinc-400 text-sm">Buttery sourdough committed with minced garlic and fresh parsley. Revertible.</p>
+                    <button class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center">
+                        <i class="fas fa-plus text-xs"></i>
+                    </button>
                 </div>
             </div>
         </section>
 
-        <section class="mb-20">
-            <div class="flex items-center gap-4 mb-8">
-                <h2 class="text-3xl font-bold neon-text-blue">02. Syntax Mains</h2>
-                <div class="h-[1px] flex-grow bg-zinc-800"></div>
-                <span class="mono text-xs text-zinc-600">ENTREES</span>
-            </div>
-            
-            <div class="grid md:grid-cols-2 gap-8">
-                <div class="dish-card p-8 rounded-xl relative overflow-hidden">
-                    <div class="flex justify-between items-center mb-4">
-                        <h3 class="text-2xl font-bold">The Full-Stack Burger</h3>
-                        <span class="price-tag mono">$24.00</span>
+        <section>
+            <h2 class="text-xs uppercase tracking-[0.2em] text-pink-500 font-bold mb-4 ml-2">/// SYNTAX MAINS</h2>
+            <div class="space-y-3">
+                <div class="item-card p-4 flex justify-between items-center" onclick="addToOrder('Full-Stack Burger', 24)">
+                    <div>
+                        <h3 class="font-bold">Full-Stack Burger</h3>
+                        <p class="text-gray-500 text-xs mt-1">Wagyu, Cheddar, & AI Sauce</p>
+                        <span class="text-pink-400 text-sm font-bold">$24</span>
                     </div>
-                    <p class="text-zinc-400 mb-4">Layers of Wagyu beef (Backend), melting cheddar (Frontend), and secret AI sauce (Database), served on a toasted brioche bun.</p>
-                    <ul class="text-xs mono text-indigo-400 flex gap-4">
-                        <li>#GlutenFreeAvailable</li>
-                        <li>#HighPerformance</li>
-                    </ul>
+                    <button class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center">
+                        <i class="fas fa-plus text-xs"></i>
+                    </button>
                 </div>
 
-                <div class="dish-card p-8 rounded-xl">
-                    <div class="flex justify-between items-center mb-4">
-                        <h3 class="text-2xl font-bold">Python Pasta</h3>
-                        <span class="price-tag mono">$21.00</span>
+                <div class="item-card p-4 flex justify-between items-center" onclick="addToOrder('Python Pasta', 21)">
+                    <div>
+                        <h3 class="font-bold">Python Pasta</h3>
+                        <p class="text-gray-500 text-xs mt-1">Pesto with perfect indentation</p>
+                        <span class="text-pink-400 text-sm font-bold">$21</span>
                     </div>
-                    <p class="text-zinc-400 mb-4">Hand-pulled linguine in a pesto green sauce. Indented perfectly with parmesan shavings and sun-dried tomatoes.</p>
-                    <ul class="text-xs mono text-indigo-400 flex gap-4">
-                        <li>#CleanCode</li>
-                        <li>#FastExecution</li>
-                    </ul>
+                    <button class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center">
+                        <i class="fas fa-plus text-xs"></i>
+                    </button>
                 </div>
 
-                <div class="dish-card p-8 rounded-xl">
-                    <div class="flex justify-between items-center mb-4">
-                        <h3 class="text-2xl font-bold">Cloud-Native Curry</h3>
-                        <span class="price-tag mono">$26.00</span>
+                <div class="item-card p-4 flex justify-between items-center" onclick="addToOrder('Cloud Curry', 26)">
+                    <div>
+                        <h3 class="font-bold">Cloud-Native Curry</h3>
+                        <p class="text-gray-500 text-xs mt-1">Scalable spicy red curry</p>
+                        <span class="text-pink-400 text-sm font-bold">$26</span>
                     </div>
-                    <p class="text-zinc-400 mb-4">A scalable, spicy red curry served in a container (bowl) with jasmine rice. Highly available and serverless.</p>
-                </div>
-
-                <div class="dish-card p-8 rounded-xl border-dashed border-zinc-700">
-                    <div class="flex justify-between items-center mb-4">
-                        <h3 class="text-2xl font-bold">Debug Steak</h3>
-                        <span class="price-tag mono">$32.00</span>
-                    </div>
-                    <p class="text-zinc-400 mb-4">Premium ribeye grilled to eliminate all bugs. Served with a side of StackOverflow sweet potato fries.</p>
+                    <button class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center">
+                        <i class="fas fa-plus text-xs"></i>
+                    </button>
                 </div>
             </div>
         </section>
 
-        <section class="mb-20">
-            <div class="flex items-center gap-4 mb-8">
-                <h2 class="text-3xl font-bold text-yellow-500">03. Byte-Sized Desserts</h2>
-                <div class="h-[1px] flex-grow bg-zinc-800"></div>
-                <span class="mono text-xs text-zinc-600">SWEETS</span>
-            </div>
-            
-            <div class="grid md:grid-cols-3 gap-6">
-                <div class="dish-card p-6 rounded-xl">
-                    <h3 class="text-lg font-bold mb-2">Cookie Consent Brownie</h3>
-                    <p class="text-zinc-500 text-sm italic mb-3">Accept all flavors.</p>
-                    <span class="price-tag mono">$07.00</span>
-                </div>
-                <div class="dish-card p-6 rounded-xl">
-                    <h3 class="text-lg font-bold mb-2">Neural Network Cheesecake</h3>
-                    <p class="text-zinc-500 text-sm italic mb-3">Multi-layered flavor profiles.</p>
-                    <span class="price-tag mono">$09.00</span>
-                </div>
-                <div class="dish-card p-6 rounded-xl">
-                    <h3 class="text-lg font-bold mb-2">Binary Sorbet</h3>
-                    <p class="text-zinc-500 text-sm italic mb-3">0% Fat, 100% Refreshing.</p>
-                    <span class="price-tag mono">$06.00</span>
+        <section>
+            <h2 class="text-xs uppercase tracking-[0.2em] text-yellow-500 font-bold mb-4 ml-2">/// REFRESHMENTS</h2>
+            <div class="space-y-3">
+                <div class="item-card p-4 flex justify-between items-center" onclick="addToOrder('Crypto Coffee', 6)">
+                    <div>
+                        <h3 class="font-bold">Crypto Coffee</h3>
+                        <p class="text-gray-500 text-xs mt-1">Cold brew with stable bubbles</p>
+                        <span class="text-yellow-500 text-sm font-bold">$6</span>
+                    </div>
+                    <button class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center">
+                        <i class="fas fa-plus text-xs"></i>
+                    </button>
                 </div>
             </div>
         </section>
 
     </main>
 
-    <footer class="py-12 border-t border-zinc-900 text-center">
-        <p class="mono text-zinc-600 text-xs tracking-widest">EST. 2024 // ENCRYPTED DINING EXPERIENCE</p>
-    </footer>
+    <div class="fixed bottom-0 left-0 right-0 max-w-[500px] mx-auto p-4 bg-black/80 backdrop-blur-xl border-t border-white/10">
+        <button onclick="sendOrder()" class="whatsapp-btn w-full py-4 rounded-2xl flex items-center justify-center gap-3 text-white font-bold text-lg transition-transform active:scale-95">
+            <i class="fab fa-whatsapp text-2xl"></i>
+            <span>Order via WhatsApp (<span id="cart-count">0</span>)</span>
+        </button>
+    </div>
 
+    <script>
+        let cart = [];
+        let phoneNumber = "1234567890"; // REPLACE WITH YOUR ACTUAL NUMBER
+
+        function addToOrder(name, price) {
+            cart.push({name, price});
+            document.getElementById('cart-count').innerText = cart.length;
+            
+            // Simple visual feedback
+            const btn = document.querySelector('.whatsapp-btn');
+            btn.classList.add('scale-105');
+            setTimeout(() => btn.classList.remove('scale-105'), 200);
+        }
+
+        function sendOrder() {
+            if (cart.length === 0) {
+                alert("Your cart is empty! Add some delicious code first.");
+                return;
+            }
+
+            let message = "🚀 *New Order from Blackbox Diner*\n\n";
+            let total = 0;
+            
+            cart.forEach((item, index) => {
+                message += `${index + 1}. ${item.name} - $${item.price}\n`;
+                total += item.price;
+            });
+
+            message += `\n💰 *Total: $${total}*`;
+            message += "\n\n Please confirm my order!";
+
+            const encodedMessage = encodeURIComponent(message);
+            window.location.href = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+        }
+    </script>
 </body>
 </html>
