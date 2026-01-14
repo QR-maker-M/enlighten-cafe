@@ -1,25 +1,183 @@
-<section class="menu">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blackbox AI | The Developer's Kitchen</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&family=JetBrains+Mono&display=swap');
+        
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background-color: #050505;
+            color: #e0e0e0;
+        }
 
-<h2>☕ Espresso Bar</h2>
-<div class="item"><span>Espresso</span><span>₹120</span><button onclick="addItem('Espresso - ₹120')">Add</button></div>
-<div class="item"><span>Cappuccino</span><span>₹180</span><button onclick="addItem('Cappuccino - ₹180')">Add</button></div>
-<div class="item"><span>Caffè Latte</span><span>₹190</span><button onclick="addItem('Caffè Latte - ₹190')">Add</button></div>
-<div class="item"><span>Caffè Mocha</span><span>₹220</span><button onclick="addItem('Caffè Mocha - ₹220')">Add</button></div>
+        .mono { font-family: 'JetBrains Mono', monospace; }
 
-<h2>🧊 Slow Bar & Pour Overs</h2>
-<div class="item"><span>Cold Brew</span><span>₹230</span><button onclick="addItem('Cold Brew - ₹230')">Add</button></div>
-<div class="item"><span>Nitro Cold Brew</span><span>₹280</span><button onclick="addItem('Nitro Cold Brew - ₹280')">Add</button></div>
+        .neon-border {
+            border: 1px solid rgba(0, 255, 255, 0.3);
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.1);
+        }
 
-<h2>🌸 Signature Lattes</h2>
-<div class="item"><span>Lavender Honey Latte</span><span>₹260</span><button onclick="addItem('Lavender Honey Latte - ₹260')">Add</button></div>
-<div class="item"><span>Dirty Chai</span><span>₹240</span><button onclick="addItem('Dirty Chai - ₹240')">Add</button></div>
+        .neon-text-blue { text-shadow: 0 0 10px rgba(0, 255, 255, 0.5); color: #00ffff; }
+        .neon-text-pink { text-shadow: 0 0 10px rgba(255, 0, 255, 0.5); color: #ff00ff; }
 
-<h2>🥐 All-Day Kitchen</h2>
-<div class="item"><span>Avocado Toast</span><span>₹280</span><button onclick="addItem('Avocado Toast - ₹280')">Add</button></div>
-<div class="item"><span>Morning Brioche</span><span>₹260</span><button onclick="addItem('Morning Brioche - ₹260')">Add</button></div>
+        .category-tab {
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border-bottom: 2px solid transparent;
+        }
 
-<h2>🍰 Pastries</h2>
-<div class="item"><span>Butter Croissant</span><span>₹140</span><button onclick="addItem('Butter Croissant - ₹140')">Add</button></div>
-<div class="item"><span>Sea Salt Brownie</span><span>₹170</span><button onclick="addItem('Sea Salt Brownie - ₹170')">Add</button></div>
+        .category-tab:hover, .category-tab.active {
+            color: #00ffff;
+            border-bottom: 2px solid #00ffff;
+        }
 
-</section>
+        .dish-card {
+            background: linear-gradient(145deg, #0f0f0f, #1a1a1a);
+            border: 1px solid #333;
+            transition: transform 0.2s ease;
+        }
+
+        .dish-card:hover {
+            transform: scale(1.02);
+            border-color: #00ffff;
+        }
+
+        .price-tag {
+            background: rgba(0, 255, 255, 0.1);
+            color: #00ffff;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="py-16 px-6 text-center border-b border-zinc-800">
+        <h1 class="text-6xl font-bold mb-4 tracking-tight">THE <span class="neon-text-blue">BLACKBOX</span> DINER</h1>
+        <p class="mono text-zinc-500 uppercase tracking-widest text-sm">Fueling the next billion lines of code</p>
+    </header>
+
+    <main class="max-w-6xl mx-auto px-6 py-12">
+        
+        <section class="mb-20">
+            <div class="flex items-center gap-4 mb-8">
+                <h2 class="text-3xl font-bold neon-text-pink">01. Logic Starters</h2>
+                <div class="h-[1px] flex-grow bg-zinc-800"></div>
+                <span class="mono text-xs text-zinc-600">APPETIZERS</span>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="dish-card p-6 rounded-xl">
+                    <div class="flex justify-between items-start mb-4">
+                        <h3 class="text-xl font-bold">API Spring Rolls</h3>
+                        <span class="price-tag mono">$12.00</span>
+                    </div>
+                    <p class="text-zinc-400 text-sm">Crispy wrappers filled with fresh JSON data and served with a spicy RESTful sauce.</p>
+                </div>
+                <div class="dish-card p-6 rounded-xl">
+                    <div class="flex justify-between items-start mb-4">
+                        <h3 class="text-xl font-bold">Cache Calamari</h3>
+                        <span class="price-tag mono">$15.00</span>
+                    </div>
+                    <p class="text-zinc-400 text-sm">Flash-fried rings of data, optimized for low latency and high crunch.</p>
+                </div>
+                <div class="dish-card p-6 rounded-xl">
+                    <div class="flex justify-between items-start mb-4">
+                        <h3 class="text-xl font-bold">Git-Commit Garlic Bread</h3>
+                        <span class="price-tag mono">$08.00</span>
+                    </div>
+                    <p class="text-zinc-400 text-sm">Buttery sourdough committed with minced garlic and fresh parsley. Revertible.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-20">
+            <div class="flex items-center gap-4 mb-8">
+                <h2 class="text-3xl font-bold neon-text-blue">02. Syntax Mains</h2>
+                <div class="h-[1px] flex-grow bg-zinc-800"></div>
+                <span class="mono text-xs text-zinc-600">ENTREES</span>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="dish-card p-8 rounded-xl relative overflow-hidden">
+                    <div class="flex justify-between items-center mb-4">
+                        <h3 class="text-2xl font-bold">The Full-Stack Burger</h3>
+                        <span class="price-tag mono">$24.00</span>
+                    </div>
+                    <p class="text-zinc-400 mb-4">Layers of Wagyu beef (Backend), melting cheddar (Frontend), and secret AI sauce (Database), served on a toasted brioche bun.</p>
+                    <ul class="text-xs mono text-indigo-400 flex gap-4">
+                        <li>#GlutenFreeAvailable</li>
+                        <li>#HighPerformance</li>
+                    </ul>
+                </div>
+
+                <div class="dish-card p-8 rounded-xl">
+                    <div class="flex justify-between items-center mb-4">
+                        <h3 class="text-2xl font-bold">Python Pasta</h3>
+                        <span class="price-tag mono">$21.00</span>
+                    </div>
+                    <p class="text-zinc-400 mb-4">Hand-pulled linguine in a pesto green sauce. Indented perfectly with parmesan shavings and sun-dried tomatoes.</p>
+                    <ul class="text-xs mono text-indigo-400 flex gap-4">
+                        <li>#CleanCode</li>
+                        <li>#FastExecution</li>
+                    </ul>
+                </div>
+
+                <div class="dish-card p-8 rounded-xl">
+                    <div class="flex justify-between items-center mb-4">
+                        <h3 class="text-2xl font-bold">Cloud-Native Curry</h3>
+                        <span class="price-tag mono">$26.00</span>
+                    </div>
+                    <p class="text-zinc-400 mb-4">A scalable, spicy red curry served in a container (bowl) with jasmine rice. Highly available and serverless.</p>
+                </div>
+
+                <div class="dish-card p-8 rounded-xl border-dashed border-zinc-700">
+                    <div class="flex justify-between items-center mb-4">
+                        <h3 class="text-2xl font-bold">Debug Steak</h3>
+                        <span class="price-tag mono">$32.00</span>
+                    </div>
+                    <p class="text-zinc-400 mb-4">Premium ribeye grilled to eliminate all bugs. Served with a side of StackOverflow sweet potato fries.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-20">
+            <div class="flex items-center gap-4 mb-8">
+                <h2 class="text-3xl font-bold text-yellow-500">03. Byte-Sized Desserts</h2>
+                <div class="h-[1px] flex-grow bg-zinc-800"></div>
+                <span class="mono text-xs text-zinc-600">SWEETS</span>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="dish-card p-6 rounded-xl">
+                    <h3 class="text-lg font-bold mb-2">Cookie Consent Brownie</h3>
+                    <p class="text-zinc-500 text-sm italic mb-3">Accept all flavors.</p>
+                    <span class="price-tag mono">$07.00</span>
+                </div>
+                <div class="dish-card p-6 rounded-xl">
+                    <h3 class="text-lg font-bold mb-2">Neural Network Cheesecake</h3>
+                    <p class="text-zinc-500 text-sm italic mb-3">Multi-layered flavor profiles.</p>
+                    <span class="price-tag mono">$09.00</span>
+                </div>
+                <div class="dish-card p-6 rounded-xl">
+                    <h3 class="text-lg font-bold mb-2">Binary Sorbet</h3>
+                    <p class="text-zinc-500 text-sm italic mb-3">0% Fat, 100% Refreshing.</p>
+                    <span class="price-tag mono">$06.00</span>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="py-12 border-t border-zinc-900 text-center">
+        <p class="mono text-zinc-600 text-xs tracking-widest">EST. 2024 // ENCRYPTED DINING EXPERIENCE</p>
+    </footer>
+
+</body>
+</html>
